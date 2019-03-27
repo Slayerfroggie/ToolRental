@@ -77,4 +77,7 @@ C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToo
 C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\obj\Debug\YourProjectToolRental.csproj.CopyComplete
 C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\obj\Debug\YourProjectToolRental.dll
 C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\obj\Debug\YourProjectToolRental.pdb
-C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\obj\Debug\YourProjectToolRental.csprojAssemblyReference.cache
+C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\bin\EntityFramework.dll
+C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\bin\EntityFramework.SqlServer.dll
+C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\bin\EntityFramework.xml
+C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\bin\EntityFramework.SqlServer.xml

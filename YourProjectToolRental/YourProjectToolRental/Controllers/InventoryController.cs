@@ -3,31 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using YourProjectToolRental.DAL;
 using YourProjectToolRental.Models;
 
 namespace YourProjectToolRental.Controllers
 {
     public class InventoryController : Controller
     {
-		//temporary database
-		public static List<Inventory> inventoryList = new List<Inventory>
-		{
-			new Inventory{AssetId = 1, Brand = "Generic", Description = "Hammer that hammers", Active = true, Comment = "Works fine" },
-			new Inventory{AssetId = 2, Brand = "Makita", Description = "1000w Drill", Active = false, Comment = "Front won't spin" },
-			new Inventory{AssetId = 3, Brand = "Generic", Description = "Screwdriver", Active = true, Comment = "Works fine" }
-		};
+		private ToolContext db = new ToolContext();
 
-        // GET: Inventory List
-        public ActionResult Index()
+		// GET: Inventory List
+		public ActionResult Index()
         {
-			var inventory = from a in inventoryList orderby a.AssetId select a;
-            return View(inventory);
+			var inventory = from a in db.Assets orderby a.AssetId select a;
+            return View(db.Assets.ToList());
         }
 
 		#region Edit
 		public ActionResult Edit(int Id)
 		{
-			var inventory = inventoryList.Single(a => a.AssetId == Id);
+			var inventory = db.Assets.Single(a => a.AssetId == Id);
 
 			return View(inventory);
 		}
@@ -38,10 +33,13 @@ namespace YourProjectToolRental.Controllers
 		{
 			try
 			{
-				var inventory = inventoryList.Single(a => a.AssetId == Id);
+				var inventory = db.Assets.Single(a => a.AssetId == Id);
 				if (TryUpdateModel(inventory))
-				return RedirectToAction("Index");
+				{
+					db.SaveChanges();
 
+					return RedirectToAction("Index");
+				}
 				return View(inventory);
 			}
 			catch
@@ -68,12 +66,15 @@ namespace YourProjectToolRental.Controllers
 
 				bool active = Convert.ToBoolean(collection["Active"].Split(',')[0]);
 
-				inventory.AssetId = (inventoryList.Count == 0) ? 1 : inventoryList.Max(a => a.AssetId) + 1;
+				inventory.AssetId = (db.Assets.Count<Inventory>() == 0) ? 1 : db.Assets.Max(a => a.AssetId) + 1;
 				inventory.Brand = collection["brand"];
 				inventory.Description = collection["description"];
 				inventory.Active = active;
 				inventory.Comment = collection["comment"];
-				inventoryList.Add(inventory);
+				db.Assets.Add(inventory);
+
+				db.SaveChanges();
+
 				return RedirectToAction("Index");
 			}
 			catch
@@ -86,7 +87,7 @@ namespace YourProjectToolRental.Controllers
 		#region Details
 		public ActionResult Details(int Id)
 		{
-			var inventory = inventoryList.Single(m => m.AssetId == Id);
+			var inventory = db.Assets.Single(m => m.AssetId == Id);
 
 			return View(inventory);
 		}
@@ -95,7 +96,7 @@ namespace YourProjectToolRental.Controllers
 		#region Delete
 		public ActionResult Delete(int Id)
 		{
-			var inventory = inventoryList.Single(m => m.AssetId == Id);
+			var inventory = db.Assets.Single(m => m.AssetId == Id);
 
 			return View(inventory);
 		}
@@ -106,14 +107,28 @@ namespace YourProjectToolRental.Controllers
 		{
 			try
 			{
-				var inventory = inventoryList.Single(m => m.AssetId == Id);
-				inventoryList.Remove(inventory);
+				var inventory = db.Assets.Single(m => m.AssetId == Id);
+				db.Assets.Remove(inventory);
+				db.SaveChanges();
+
 				return RedirectToAction("index");
 			}
 			catch
 			{
 				return View();
 			}
+		}
+		#endregion
+
+		#region Route
+		[Route("Inventory/DisplayPageSort/{pageIndex}/{sortBy}")]
+		public ActionResult DisplayPageSort(int? pageIndex, string sortBy)
+		{
+			if (!pageIndex.HasValue) pageIndex = 1;
+			if (string.IsNullOrWhiteSpace(sortBy)) sortBy = "Brand";
+
+			return Content(string.Format("PageIndex={0} and SortBy={1}",
+						   pageIndex, sortBy));
 		}
 		#endregion
 	}
