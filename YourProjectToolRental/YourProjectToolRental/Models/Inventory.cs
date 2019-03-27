@@ -11,6 +11,6 @@ namespace YourProjectToolRental.Models
 		public string Brand { get; set; }
 		public string Description { get; set; }
 		public bool Active { get; set; }
-		public string comment { get; set; }
+		public string Comment { get; set; }
 	}
 }
