@@ -81,3 +81,4 @@ C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToo
 C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\bin\EntityFramework.SqlServer.dll
 C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\bin\EntityFramework.xml
 C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\bin\EntityFramework.SqlServer.xml
+C:\Franciscus\ToolRentalVersions\ToolRental\YourProjectToolRental\YourProjectToolRental\obj\Debug\YourProjectToolRental.csprojAssemblyReference.cache
