@@ -6,7 +6,7 @@ namespace YourProjectToolRental.DAL
 {
 	public class ToolContext : DbContext
 	{
-		public DbSet<Inventory> Assets { get; set; }
+		public DbSet<Inventory> Inventories { get; set; }
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{

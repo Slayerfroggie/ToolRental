@@ -13,16 +13,16 @@ namespace YourProjectToolRental.Controllers
 		private ToolContext db = new ToolContext();
 
 		// GET: Inventory List
-		public ActionResult Index()
+		public ActionResult Index()                            
         {
-			var inventory = from a in db.Assets orderby a.AssetId select a;
-            return View(db.Assets.ToList());
+			var inventories = from a in db.Inventories orderby a.AssetId select a;
+            return View(db.Inventories.ToList());
         }
 
 		#region Edit
 		public ActionResult Edit(int Id)
 		{
-			var inventory = db.Assets.Single(a => a.AssetId == Id);
+			var inventory = db.Inventories.Single(a => a.AssetId == Id);
 
 			return View(inventory);
 		}
@@ -33,7 +33,7 @@ namespace YourProjectToolRental.Controllers
 		{
 			try
 			{
-				var inventory = db.Assets.Single(a => a.AssetId == Id);
+				var inventory = db.Inventories.Single(a => a.AssetId == Id);
 				if (TryUpdateModel(inventory))
 				{
 					db.SaveChanges();
@@ -66,12 +66,12 @@ namespace YourProjectToolRental.Controllers
 
 				bool active = Convert.ToBoolean(collection["Active"].Split(',')[0]);
 
-				inventory.AssetId = (db.Assets.Count<Inventory>() == 0) ? 1 : db.Assets.Max(a => a.AssetId) + 1;
+				inventory.AssetId = (db.Inventories.Count<Inventory>() == 0) ? 1 : db.Inventories.Max(a => a.AssetId) + 1;
 				inventory.Brand = collection["brand"];
 				inventory.Description = collection["description"];
 				inventory.Active = active;
 				inventory.Comment = collection["comment"];
-				db.Assets.Add(inventory);
+				db.Inventories.Add(inventory);
 
 				db.SaveChanges();
 
@@ -87,7 +87,7 @@ namespace YourProjectToolRental.Controllers
 		#region Details
 		public ActionResult Details(int Id)
 		{
-			var inventory = db.Assets.Single(m => m.AssetId == Id);
+			var inventory = db.Inventories.Single(m => m.AssetId == Id);
 
 			return View(inventory);
 		}
@@ -96,7 +96,7 @@ namespace YourProjectToolRental.Controllers
 		#region Delete
 		public ActionResult Delete(int Id)
 		{
-			var inventory = db.Assets.Single(m => m.AssetId == Id);
+			var inventory = db.Inventories.Single(m => m.AssetId == Id);
 
 			return View(inventory);
 		}
@@ -107,8 +107,8 @@ namespace YourProjectToolRental.Controllers
 		{
 			try
 			{
-				var inventory = db.Assets.Single(m => m.AssetId == Id);
-				db.Assets.Remove(inventory);
+				var inventory = db.Inventories.Single(m => m.AssetId == Id);
+				db.Inventories.Remove(inventory);
 				db.SaveChanges();
 
 				return RedirectToAction("index");
