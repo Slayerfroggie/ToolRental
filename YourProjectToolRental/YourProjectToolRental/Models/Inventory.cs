@@ -14,5 +14,6 @@ namespace YourProjectToolRental.Models
 		public string Description { get; set; }
 		public bool Active { get; set; }
 		public string Comment { get; set; }
+		public string ToolType { get; set; }
 	}
 }

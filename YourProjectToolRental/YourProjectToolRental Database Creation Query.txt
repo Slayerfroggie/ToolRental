@@ -1,0 +1,31 @@
+CREATE DATABASE YourProjectToolRental;
+
+CREATE TABLE Inventory (
+AssetId Int NOT NULL PRIMARY KEY,
+ToolType varchar(25) NOT NULL,
+Brand varchar(25) NOT NULL,
+Description varchar(255) NOT NULL,
+Active bit NOT NULL,
+Comment varchar(255)
+);
+
+CREATE TABLE Customers(
+CustomerID Int NOT NULL PRIMARY KEY,
+FName varchar(25) NOT NULL,
+LName varchar(25) NOT NULL,
+Phone# varchar(16) NOT NULL,
+Email varchar(255)
+);
+
+CREATE TABLE Rentals(
+RentalID Int NOT NULL PRIMARY KEY,
+CustomerID Int NOT NULL FOREIGN KEY REFERENCES Customers(CustomerID),
+CheckedOutDate datetime NOT NULL,
+CheckedInDate datetime NOT NULL,
+);
+
+CREATE TABLE RentalItems(
+RentalItemID Int NOT NULL PRIMARY KEY,
+RentalID Int NOT NULL FOREIGN KEY REFERENCES Rentals(RentalID),
+AssetID Int NOT NULL FOREIGN KEY REFERENCES Inventory(AssetID)
+);
