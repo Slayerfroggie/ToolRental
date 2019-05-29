@@ -10,7 +10,7 @@ Comment varchar(255)
 );
 
 CREATE TABLE Customers(
-CustomerID Int NOT NULL PRIMARY KEY,
+CustomerId Int NOT NULL PRIMARY KEY,
 FName varchar(25) NOT NULL,
 LName varchar(25) NOT NULL,
 Phone# varchar(16) NOT NULL,
@@ -18,14 +18,14 @@ Email varchar(255)
 );
 
 CREATE TABLE Rentals(
-RentalID Int NOT NULL PRIMARY KEY,
-CustomerID Int NOT NULL FOREIGN KEY REFERENCES Customers(CustomerID),
+RentalId Int NOT NULL PRIMARY KEY,
+CustomerId Int NOT NULL FOREIGN KEY REFERENCES Customers(CustomerId),
 CheckedOutDate datetime NOT NULL,
 CheckedInDate datetime NOT NULL,
 );
 
 CREATE TABLE RentalItems(
-RentalItemID Int NOT NULL PRIMARY KEY,
-RentalID Int NOT NULL FOREIGN KEY REFERENCES Rentals(RentalID),
-AssetID Int NOT NULL FOREIGN KEY REFERENCES Inventory(AssetID)
+RentalItemId Int NOT NULL PRIMARY KEY,
+RentalId Int NOT NULL FOREIGN KEY REFERENCES Rentals(RentalId),
+AssetId Int NOT NULL FOREIGN KEY REFERENCES Inventory(AssetId)
 );

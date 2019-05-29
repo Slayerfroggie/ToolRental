@@ -10,7 +10,7 @@ namespace ToolRentalWebAPI.Controllers
 {
     public class InventoryController : ApiController
     {
-		private YourProjectToolRentalEntities db = new YourProjectToolRentalEntities();
+		private YourProjectToolRentalEntities1 db = new YourProjectToolRentalEntities1();
 
 		// GET: api/Inventories
 		public IQueryable<Inventory> GetInventories()

@@ -20,8 +20,8 @@ namespace ToolRentalWebAPI.Models
             this.RentalItems = new HashSet<RentalItem>();
         }
     
-        public int RentalID { get; set; }
-        public int CustomerID { get; set; }
+        public int RentalId { get; set; }
+        public int CustomerId { get; set; }
         public System.DateTime CheckedOutDate { get; set; }
         public System.DateTime CheckedInDate { get; set; }
     

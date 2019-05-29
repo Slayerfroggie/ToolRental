@@ -20,7 +20,7 @@ namespace ToolRentalWebAPI.Models
             this.Rentals = new HashSet<Rental>();
         }
     
-        public int CustomerID { get; set; }
+        public int CustomerId { get; set; }
         public string FName { get; set; }
         public string LName { get; set; }
         public string Phone_ { get; set; }

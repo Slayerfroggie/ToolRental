@@ -21,11 +21,11 @@ namespace ToolRentalWebAPI.Models
         }
     
         public int AssetId { get; set; }
+        public string ToolType { get; set; }
         public string Brand { get; set; }
         public string Description { get; set; }
         public bool Active { get; set; }
         public string Comment { get; set; }
-        public string ToolType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RentalItem> RentalItems { get; set; }

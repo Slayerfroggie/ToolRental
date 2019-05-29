@@ -14,9 +14,9 @@ namespace ToolRentalWebAPI.Models
     
     public partial class RentalItem
     {
-        public int RentalItemID { get; set; }
-        public int RentalID { get; set; }
-        public int AssetID { get; set; }
+        public int RentalItemId { get; set; }
+        public int RentalId { get; set; }
+        public int AssetId { get; set; }
     
         public virtual Inventory Inventory { get; set; }
         public virtual Rental Rental { get; set; }

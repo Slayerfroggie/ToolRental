@@ -165,38 +165,43 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
+    <Compile Include="Controllers\RentalItemsController.cs" />
+    <Compile Include="Controllers\RentalsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs">
-      <DependentUpon>ToolModels.tt</DependentUpon>
+      <DependentUpon>ToolModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Inventory.cs">
-      <DependentUpon>ToolModels.tt</DependentUpon>
+      <DependentUpon>ToolModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Rental.cs">
-      <DependentUpon>ToolModels.tt</DependentUpon>
+      <DependentUpon>ToolModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\RentalItem.cs">
-      <DependentUpon>ToolModels.tt</DependentUpon>
+      <DependentUpon>ToolModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ToolModels.Context.cs">
+    <Compile Include="Models\ToolModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ToolModels.Context.tt</DependentUpon>
+      <DependentUpon>ToolModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ToolModels.cs">
+    <Compile Include="Models\ToolModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ToolModels.tt</DependentUpon>
+      <DependentUpon>ToolModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ToolModels.Designer.cs">
+    <Compile Include="Models\ToolModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ToolModels.edmx</DependentUpon>
+      <DependentUpon>ToolModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\CustomerRentalDetailsViewModel.cs" />
+    <Compile Include="ViewModels\CustomerRentalsViewModel.cs" />
+    <Compile Include="ViewModels\CustomerToolViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -207,15 +212,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\ToolModels.Context.tt">
+    <Content Include="Models\ToolModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ToolModels.edmx</DependentUpon>
-      <LastGenOutput>ToolModels.Context.cs</LastGenOutput>
+      <DependentUpon>ToolModel.edmx</DependentUpon>
+      <LastGenOutput>ToolModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\ToolModels.tt">
+    <Content Include="Models\ToolModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ToolModels.edmx</DependentUpon>
-      <LastGenOutput>ToolModels.cs</LastGenOutput>
+      <DependentUpon>ToolModel.edmx</DependentUpon>
+      <LastGenOutput>ToolModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -238,12 +243,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\CollectionModelDescription.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
-    <EntityDeploy Include="Models\ToolModels.edmx">
+    <EntityDeploy Include="Models\ToolModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ToolModels.Designer.cs</LastGenOutput>
+      <LastGenOutput>ToolModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\ToolModels.edmx.diagram">
-      <DependentUpon>ToolModels.edmx</DependentUpon>
+    <Content Include="Models\ToolModel.edmx.diagram">
+      <DependentUpon>ToolModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -251,7 +256,9 @@
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

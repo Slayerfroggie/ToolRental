@@ -13,10 +13,10 @@ namespace ToolRentalWebAPI.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class YourProjectToolRentalEntities : DbContext
+    public partial class YourProjectToolRentalEntities1 : DbContext
     {
-        public YourProjectToolRentalEntities()
-            : base("name=YourProjectToolRentalEntities")
+        public YourProjectToolRentalEntities1()
+            : base("name=YourProjectToolRentalEntities1")
         {
         }
     

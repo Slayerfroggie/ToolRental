@@ -13,7 +13,7 @@ namespace ToolRentalWebAPI.Controllers
 {
     public class CustomerController : ApiController
     {
-		private YourProjectToolRentalEntities db = new YourProjectToolRentalEntities();
+		private YourProjectToolRentalEntities1 db = new YourProjectToolRentalEntities1();
 
 		// GET: api/Customers
 		public IQueryable<Customer> GetCustomers()
@@ -43,7 +43,7 @@ namespace ToolRentalWebAPI.Controllers
 				return BadRequest(ModelState);
 			}
 
-			if (id != customer.CustomerID)
+			if (id != customer.CustomerId)
 			{
 				return BadRequest();
 			}
@@ -81,7 +81,7 @@ namespace ToolRentalWebAPI.Controllers
 			db.Customers.Add(customer);
 			db.SaveChanges();
 
-			return CreatedAtRoute("DefaultApi", new { id = customer.CustomerID }, customer);
+			return CreatedAtRoute("DefaultApi", new { id = customer.CustomerId }, customer);
 		}
 
 		// DELETE: api/Customers/5
@@ -111,7 +111,7 @@ namespace ToolRentalWebAPI.Controllers
 
 		private bool CustomerExists(int id)
 		{
-			return db.Customers.Count(e => e.CustomerID == id) > 0;
+			return db.Customers.Count(e => e.CustomerId == id) > 0;
 		}
 	}
 }
