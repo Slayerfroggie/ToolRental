@@ -114,6 +114,7 @@ namespace YourProjectToolRental.Controllers
 			// Setting the primary key value to a negative value will make SQL server to find the next available PKID when you save it.
 			rental.RentalId = -999;
 			rental.CheckedOutDate = DateTime.Now;
+			rental.CheckedInDate = DateTime.Parse("01/01/2000");
 			var customers = GetCustomers();
 			rental.Customers = customers;
 			rental.RentedTools = new List<CustomerToolsViewModel>();
@@ -169,6 +170,7 @@ namespace YourProjectToolRental.Controllers
 		{
 			var rentalItem = new RentalItem();
 			var tools = GetTools();
+			rentalItem.RentalItemId = RentalId + 1;
 			rentalItem.RentalId = RentalId;
 			rentalItem.Tools = tools;
 
@@ -182,19 +184,19 @@ namespace YourProjectToolRental.Controllers
 			try
 			{
 				Id = rentalItem.RentalId;
-				HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("RentalItem", rentalItem).Result;
+				HttpResponseMessage response = WebClient.ApiClient.PostAsJsonAsync("RentalItems", rentalItem).Result;
 
 				return RedirectToAction("Edit", new { Id });
 			}
 			catch (Exception)
 			{
-				return View("No record of the associated rental can be found.  Make sure to submit the rental details before adding toolss.");
+				return View("No record of the associated rental can be found.  Make sure to submit the rental details before adding tools.");
 			}
 		}
 
 		public ActionResult EditRentedTool(int Id)
 		{
-			HttpResponseMessage response = WebClient.ApiClient.GetAsync($"RentalItem/{Id}").Result;
+			HttpResponseMessage response = WebClient.ApiClient.GetAsync($"RentalItems/{Id}").Result;
 			var rentalItem = response.Content.ReadAsAsync<RentalItem>().Result;
 			var tools = GetTools();
 			rentalItem.Tools = tools;
@@ -207,7 +209,7 @@ namespace YourProjectToolRental.Controllers
 		{
 			try
 			{
-				HttpResponseMessage response = WebClient.ApiClient.PutAsJsonAsync($"RentalItem/{Id}", rentalItem).Result;
+				HttpResponseMessage response = WebClient.ApiClient.PutAsJsonAsync($"RentalItems/{Id}", rentalItem).Result;
 				Id = rentalItem.RentalId;
 				if (response.IsSuccessStatusCode)
 					return RedirectToAction("Edit", new { Id });
@@ -271,7 +273,7 @@ namespace YourProjectToolRental.Controllers
 				.Select(c => new SelectListItem
 				{
 					Value = c.CustomerId.ToString(),
-					Text = c.FName
+					Text = c.FName + " " + c.LName
 				}).ToList();
 
 			return new SelectList(customers, "Value", "Text");

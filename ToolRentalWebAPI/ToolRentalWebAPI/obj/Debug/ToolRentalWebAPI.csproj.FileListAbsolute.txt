@@ -79,7 +79,6 @@ C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\bin\System.Web.WebPag
 C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\bin\System.Web.WebPages.Razor.xml
 C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\bin\Antlr3.Runtime.pdb
 C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\obj\Debug\ToolRentalWebAPI.csprojAssemblyReference.cache
 C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\obj\Debug\ToolRentalWebAPI.csproj.CoreCompileInputs.cache
 C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\obj\Debug\ToolRentalWebAPI.csproj.CopyComplete
 C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\obj\Debug\ToolRentalWebAPI.dll

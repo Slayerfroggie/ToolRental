@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="5361b8507745491d9cf6cb2ff16bbf90" Name="Diagram1">
-        <EntityTypeShape EntityType="YourProjectToolRentalEntities.Customer" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="YourProjectToolRentalEntities.Inventory" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="YourProjectToolRentalEntities.Customer" Width="1.5" PointX="1" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="YourProjectToolRentalEntities.Inventory" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="YourProjectToolRentalEntities.RentalItem" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="YourProjectToolRentalEntities.Rental" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="YourProjectToolRentalEntities.FK__Rentals__Custome__145C0A3F" ManuallyRouted="false" />
-        <AssociationConnector Association="YourProjectToolRentalEntities.FK__RentalIte__Asset__182C9B23" ManuallyRouted="false" />
         <AssociationConnector Association="YourProjectToolRentalEntities.FK__RentalIte__Renta__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="YourProjectToolRentalEntities.FK__Rentals__Custome__145C0A3F" />
+        <AssociationConnector Association="YourProjectToolRentalEntities.FK__RentalIte__Asset__182C9B23" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -25,8 +25,8 @@ namespace ToolRentalWebAPI.Models
         public System.DateTime CheckedOutDate { get; set; }
         public System.DateTime CheckedInDate { get; set; }
     
-        public virtual Customer Customer { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RentalItem> RentalItems { get; set; }
+        public virtual Customer Customer { get; set; }
     }
 }
