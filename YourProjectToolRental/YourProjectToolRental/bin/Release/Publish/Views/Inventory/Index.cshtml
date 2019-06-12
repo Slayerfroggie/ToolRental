@@ -1,0 +1,58 @@
+﻿@model IEnumerable<YourProjectToolRental.Models.Inventory>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+	<a href="@Url.Action("Create", "Inventory")" class="btn btn-default"><i class="fa fa-plus"></i> Create New</a>
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.ToolType)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Brand)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Description)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Active)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Comment)
+		</th>
+	</tr>
+    
+	@foreach (var item in Model) {
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.ToolType)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Brand)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Description)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Active)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Comment)
+			</td>
+
+			<td>
+				<a href="@Url.Action("Edit", "Inventory", new {id = item.AssetId})" class="btn btn-default"><i class="fa fa-pencil"></i> Edit</a>
+				<a href="@Url.Action("Details", "Inventory", new {id = item.AssetId})" class="btn btn-default"><i class="fa fa-info"></i> Details</a>
+				<a href="@Url.Action("Delete", "Inventory", new { id = item.AssetId })" class="btn btn-default"><i class="fa fa-trash"></i> Delete</a>
+			</td>
+		</tr>
+	}
+    
+</table>

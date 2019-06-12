@@ -83,3 +83,4 @@ C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\obj\Debug\ToolRentalW
 C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\obj\Debug\ToolRentalWebAPI.csproj.CopyComplete
 C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\obj\Debug\ToolRentalWebAPI.dll
 C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\obj\Debug\ToolRentalWebAPI.pdb
+C:\Franciscus\ToolRental\ToolRentalWebAPI\ToolRentalWebAPI\obj\Debug\ToolRentalWebAPI.csprojAssemblyReference.cache

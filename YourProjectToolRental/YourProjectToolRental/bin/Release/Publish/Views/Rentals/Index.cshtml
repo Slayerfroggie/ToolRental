@@ -1,0 +1,54 @@
+﻿@model IEnumerable<YourProjectToolRental.ViewModels.CustomerRentalsViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Rental List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.RentalId)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Fname)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Lname)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.CheckedOutDate)
+		</th>
+
+		<th></th>
+	</tr>
+
+@foreach (var item in Model) {
+	<tr>
+		<th>
+			@Html.DisplayFor(modelItem => item.RentalId)
+		</th>
+
+		<td>
+			@Html.DisplayFor(modelItem => item.Fname)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Lname)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.CheckedOutDate)
+		</td>
+		<td>
+			@Html.ActionLink("Edit", "Edit", new { id = item.RentalId }) |
+			@Html.ActionLink("Details", "Details", new { id = item.RentalId }) |
+			@Html.ActionLink("Delete", "Delete", new { id = item.RentalId })
+		</td>
+	</tr>
+}
+
+</table>

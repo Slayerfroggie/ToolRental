@@ -1,0 +1,52 @@
+﻿@model YourProjectToolRental.Models.RentalItem
+
+@{
+    ViewBag.Title = "AddTools";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Tools</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+	<h4>RentalItem</h4>
+	<hr />
+	@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+	<div class="form-group">
+		@Html.LabelFor(model => model.RentalItemId, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.RentalItemId, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.RentalItemId, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.RentalId, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.EditorFor(model => model.RentalId, new { htmlAttributes = new { @class = "form-control" } })
+			@Html.ValidationMessageFor(model => model.RentalId, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		@Html.LabelFor(model => model.AssetId, htmlAttributes: new { @class = "control-label col-md-2" })
+		<div class="col-md-10">
+			@Html.DropDownListFor(model => model.AssetId, Model.Tools, "- Please select a Tool -", new { @class = "form-control" })
+			@Html.ValidationMessageFor(model => model.AssetId, "", new { @class = "text-danger" })
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-md-offset-2 col-md-10">
+			<input type="submit" value="Add" class="btn btn-default" />
+		</div>
+	</div>
+</div>
+}
+
+	<div>
+		@Html.ActionLink("Back to List", "Edit", new { Id = Model.RentalId })
+	</div>
