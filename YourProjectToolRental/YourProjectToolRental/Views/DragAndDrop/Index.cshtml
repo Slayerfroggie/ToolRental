@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+	<style>
+		#div2 {
+			float: left;
+			width: 490px;
+			height: 490px;
+			margin: 10px;
+			padding: 10px;
+			border: 1px solid black;
+		}
+	</style>
+	<script>
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+	</script>
+</head>
+<body>
+
+	<h2>Drag and Drop</h2>
+	<p>Drag the image into the box</p>
+
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<img src="@Url.Content("~/BraidSwirl.gif")" draggable="true" ondragstart="drag(event)" id="drag1" width="470" height="470">
+	</div>
+
+	<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+</body>

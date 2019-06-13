@@ -15,6 +15,7 @@ namespace YourProjectToolRental.Controllers
 			HttpResponseMessage response = WebClient.ApiClient.GetAsync("Inventory").Result;
 
 			IEnumerable<Inventory> inventories = response.Content.ReadAsAsync<IEnumerable<Inventory>>().Result;
+
 			
 			return View(inventories);
 		}
