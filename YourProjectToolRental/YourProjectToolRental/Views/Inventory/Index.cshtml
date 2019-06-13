@@ -3,7 +3,6 @@
 @{
 	ViewBag.Title = "Index";
 	Layout = "~/Views/Shared/_Layout.cshtml";
-
 }
 
 <h2>Index</h2>
@@ -11,28 +10,172 @@
 <p>
 	<a href="@Url.Action("Create", "Inventory")" class="btn btn-default"><i class="fa fa-plus"></i> Create New</a>
 </p>
-0
 
-<table class="table">
+<script>
+    @*var model = @Html.Raw(Json.Encode(Model));*@
+    @*var availableTools = @Html.Raw(Json.Encode(ViewBag.AvailableTools));*@
+    var toolContent = [];
+    var CSVArray = [];
+    window.onload = loadfunction;
+
+    var brand = null;
+    var available = null;
+    var condition = null;
+
+    function loadfunction() {
+        var table = document.getElementById("toolsTable");
+        var count = 0;
+
+        //Loading data from table to toolContent array
+        for (var i = 2, row; row = table.rows[i]; i++) {
+            var rowContent = [];
+            for (var j = 0, col; j < 5; j++) {
+
+                var content = row.cells[j].innerText;
+
+                //This controls whether its a checkbox or not value
+                if (row.cells[j].innerText != "") {
+                    rowContent.push(content);
+                }
+                else {
+                    rowContent.push(row.cells[j].children[0].checked);
+                }
+            }
+            rowContent.push(row.innerHTML);
+            toolContent[count] = rowContent;
+            count++;
+        }
+
+    }
+
+    //Csv export
+
+    function ExportCsv() {
+        CSVArray = CSVArray.length == 0 ? toolContent : CSVArray;
+        let csvContent = "data:text/csv;charset=utf-8,";
+
+        CSVArray.forEach(function (element) {
+            var rowArray = [element[0], element[1], element[2], element[3], element[4]];
+            let row = rowArray.join(",");
+            csvContent += row + "\r\n";
+        });
+
+        var encodedUri = encodeURI(csvContent);
+        var link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "tools.csv");
+        document.body.appendChild(link);
+
+        link.click();
+    }
+
+    //Filter methods
+
+    function setTable(array) {
+        var tbl = document.getElementById("toolsTable");
+
+        //Clear table
+        var rows = tbl.getElementsByTagName("tr").length;
+        for (var i = rows - 1; i > 1; i--) {
+            tbl.deleteRow(i);
+        }
+
+        //Populate Table
+        for (var y = 0; y < array.length; y++) {
+            var row = tbl.insertRow(y + 2);
+            row.innerHTML = array[y][5];
+        }
+    }
+
+    function filter() {
+
+        var filteredArray = toolContent;
+
+        if (brand != null) {
+            filteredArray = filteredArray.filter(function (item) {
+                return item[1] == brand;
+            });
+        }
+
+        if (available != null) {
+            filteredArray = filteredArray.filter(function (item) {
+                return item[3] == available;
+            });
+        }
+
+        CSVArray = filteredArray;
+
+        setTable(filteredArray);
+    }
+
+    function filterBrand(value) {
+        brand = value == "" ? null : value;
+        filter();
+    }
+
+    function filterCondition(value) {
+        condition = value == "" ? null : value;
+        filter();
+    }
+
+    function filterAvailable(value) {
+        available = value == "Active" && value != "" ? true : false;
+        if (value == "Active") {
+            available = true;
+        }
+        else if(value == "Inactive"){
+            available = false;
+        }
+        else {
+            available = null;
+        }
+        filter();
+    }
+
+</script>
+
+<table class="table" id="toolsTable">
 	<tr>
 		<th>
-			@Html.DisplayNameFor(model => model.ToolType)
+			Asset Id
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.Brand)
+			Name
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.Description)
+			Description
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.Active)
+			Brand
 		</th>
 		<th>
-			@Html.DisplayNameFor(model => model.Comment)
+			Active
 		</th>
+		<th></th>
 	</tr>
-    
-	@foreach (var item in Model) {
+
+	<tr>
+	<td></td>
+	<td></td>
+	<td><b>Filter</b></td>
+	<td>
+		@*brand*@
+		@Html.DropDownList("Id", new SelectList(ViewBag.BrandFilter), "Select", new { onchange = "filterBrand(this.value);" })
+	</td>
+	<td>
+		@*Available*@
+		@Html.DropDownList("Id", new SelectList(new[] { "Active", "Inactive" }), "Select", new { onchange = "filterAvailable(this.value);" })
+	</td>
+
+	<td>
+		<a type="button" onclick="ExportCsv()" class="btn btn-default">
+			<i class="fas fa-external-link-square-alt"></i> Export CSV
+		</a>
+	</td>
+	</tr>
+
+	@foreach (var item in Model)
+	{
 		<tr>
 			<td>
 				@Html.DisplayFor(modelItem => item.ToolType)
@@ -47,7 +190,11 @@
 				@Html.DisplayFor(modelItem => item.Active)
 			</td>
 			<td>
-				@Html.DisplayFor(modelItem => item.Comment)
+				@{
+					IEnumerable<int> avail = ViewBag.AvailableTools;
+					bool contains = avail.Contains(item.AssetId) ? true : false;
+					@Html.CheckBox("checkbox", contains, new { disabled = true, id = "check" });
+				}
 			</td>
 
 			<td>
@@ -57,5 +204,5 @@
 			</td>
 		</tr>
 	}
-    
+
 </table>
