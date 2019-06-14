@@ -13,6 +13,7 @@ namespace ToolRentalWebAPI.Controllers
 		private YourProjectToolRentalEntities1 db = new YourProjectToolRentalEntities1();
 
 		// GET: api/Inventories
+		// Retrieves the Inventory list and returns it to the model for the Action result
 		public IQueryable<Inventory> GetInventories()
 		{
 			return db.Inventories;

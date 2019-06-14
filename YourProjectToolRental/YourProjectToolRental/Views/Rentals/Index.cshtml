@@ -24,6 +24,9 @@
 		<th>
 			@Html.DisplayNameFor(model => model.CheckedOutDate)
 		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.CheckedInDate)
+		</th>
 
 		<th></th>
 	</tr>
@@ -42,6 +45,9 @@
 		</td>
 		<td>
 			@Html.DisplayFor(modelItem => item.CheckedOutDate)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.CheckedInDate)
 		</td>
 		<td>
 			@Html.ActionLink("Edit", "Edit", new { id = item.RentalId }) |

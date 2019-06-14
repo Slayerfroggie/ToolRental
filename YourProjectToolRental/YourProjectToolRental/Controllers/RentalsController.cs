@@ -27,7 +27,8 @@ namespace YourProjectToolRental.Controllers
 					RentalId = r.RentalId,
 					CheckedOutDate = r.CheckedOutDate,
 					Fname = customers.Where(c => c.CustomerId == r.CustomerId).Select(u => u.FName).FirstOrDefault(),
-					Lname = customers.Where(c => c.CustomerId == r.CustomerId).Select(u => u.LName).FirstOrDefault()
+					Lname = customers.Where(c => c.CustomerId == r.CustomerId).Select(u => u.LName).FirstOrDefault(),
+					CheckedInDate = r.CheckedInDate
 				}).OrderByDescending(o => o.CheckedOutDate).ToList();
 
 			return View(customerRentalsViewModel);

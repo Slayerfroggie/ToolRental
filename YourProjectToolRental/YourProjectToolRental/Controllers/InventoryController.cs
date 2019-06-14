@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Web.Mvc;
 using YourProjectToolRental.DAL;
@@ -10,14 +11,25 @@ namespace YourProjectToolRental.Controllers
     {
 		private ToolContext db = new ToolContext();
 
-		public ActionResult Index()
+		//ActionResult method for displaying the list of Tools and providing information for filtering
+		public ActionResult Index() 
 		{
 			HttpResponseMessage response = WebClient.ApiClient.GetAsync("Inventory").Result;
 
 			IEnumerable<Inventory> inventories = response.Content.ReadAsAsync<IEnumerable<Inventory>>().Result;
 
-			
+			ViewBag.BrandFilter = inventories.GroupBy(t => t.Brand)// getting distinct brands of tools
+				   .Select(grp => grp.First())
+				   .Select(k => k.Brand)
+				   .ToList();
+
+			ViewBag.ActiveTools = inventories.GroupBy(t => t.Active) //getting the activity of the tools
+					.Select(grp => grp.First())
+					.Select(k => k.Active)
+					.ToList();
+
 			return View(inventories);
+
 		}
 
 		public ActionResult Edit(int Id)
