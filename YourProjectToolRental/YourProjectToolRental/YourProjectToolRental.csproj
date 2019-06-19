@@ -137,6 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\DragAndDropController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InventoryController.cs" />
     <Compile Include="Controllers\RentalsController.cs" />
@@ -262,6 +263,10 @@
     <Content Include="Views\Rentals\EditRentedTool.cshtml" />
     <Content Include="Views\Rentals\DeleteRentedTool.cshtml" />
     <Content Include="Views\DragAndDrop\Index.cshtml" />
+    <Content Include="Views\Help\Index.cshtml" />
+    <Content Include="Views\Help\Inventory.cshtml" />
+    <Content Include="Views\Help\Rentals.cshtml" />
+    <Content Include="Views\Help\Customers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />

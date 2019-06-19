@@ -1,0 +1,35 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<h2>Help Page Index</h2>
+
+
+
+
+
+
+<h3>For help with the Tools page. Click here:</h3>
+<p>
+	<a href="@Url.Action("Inventory", "Help")" class="btn btn-default">
+		<i class="fas fa-plus"></i> Inventory
+	</a>
+</p>
+
+<h3>For help with the Customers page. Click here:</h3>
+<p>
+	<a href="@Url.Action("Customers", "Help")" class="btn btn-default">
+		<i class="fas fa-plus"></i> Customers
+	</a>
+</p>
+
+<h3>For help with the Rentals page. Click here:</h3>
+<p>
+	<a href="@Url.Action("Rentals", "Help")" class="btn btn-default">
+		<i class="fas fa-plus"></i> Rentals
+	</a>
+</p>
