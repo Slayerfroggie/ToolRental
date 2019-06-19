@@ -13,7 +13,7 @@ namespace ToolRentalWebAPI.Controllers
 {
     public class CustomerController : ApiController
     {
-		private YourProjectToolRentalEntities1 db = new YourProjectToolRentalEntities1();
+		private YourProjectToolRentalEntities2 db = new YourProjectToolRentalEntities2();
 
 		// GET: api/Customers
 		public IQueryable<Customer> GetCustomers()

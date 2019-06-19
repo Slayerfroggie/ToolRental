@@ -10,7 +10,7 @@ namespace ToolRentalWebAPI.Controllers
 {
     public class RentalsController : ApiController
     {
-		private YourProjectToolRentalEntities1 db = new YourProjectToolRentalEntities1();
+		private YourProjectToolRentalEntities2 db = new YourProjectToolRentalEntities2();
 
 		// GET: api/Rentals
 		public IQueryable<Rental> GetRentals()
@@ -117,7 +117,14 @@ namespace ToolRentalWebAPI.Controllers
 		public IHttpActionResult GetRentalMaxId()
 		{
 			// to get Rental Items using RentalId
-			return Ok(db.Rentals.Max(r => r.RentalId) + 1);
+			if (db.Rentals.Count() > 0)
+			{
+				return Ok(db.Rentals.Max(r => r.RentalId) + 1);
+			}
+			else
+			{
+				return Ok(1);
+			}
 		}
 	}
 }

@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="YourProjectToolRentalEntitiesStoreContainer" CdmEntityContainer="YourProjectToolRentalEntities1">
+  <EntityContainerMapping StorageEntityContainer="YourProjectToolRentalModelStoreContainer" CdmEntityContainer="YourProjectToolRentalEntities2">
     <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="YourProjectToolRentalEntities.Customer">
+      <EntityTypeMapping TypeName="YourProjectToolRentalModel.Customer">
         <MappingFragment StoreEntitySet="Customers">
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="FName" ColumnName="FName" />
@@ -13,7 +13,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Inventories">
-      <EntityTypeMapping TypeName="YourProjectToolRentalEntities.Inventory">
+      <EntityTypeMapping TypeName="YourProjectToolRentalModel.Inventory">
         <MappingFragment StoreEntitySet="Inventory">
           <ScalarProperty Name="AssetId" ColumnName="AssetId" />
           <ScalarProperty Name="ToolType" ColumnName="ToolType" />
@@ -25,7 +25,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RentalItems">
-      <EntityTypeMapping TypeName="YourProjectToolRentalEntities.RentalItem">
+      <EntityTypeMapping TypeName="YourProjectToolRentalModel.RentalItem">
         <MappingFragment StoreEntitySet="RentalItems">
           <ScalarProperty Name="RentalItemId" ColumnName="RentalItemId" />
           <ScalarProperty Name="RentalId" ColumnName="RentalId" />
@@ -34,7 +34,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Rentals">
-      <EntityTypeMapping TypeName="YourProjectToolRentalEntities.Rental">
+      <EntityTypeMapping TypeName="YourProjectToolRentalModel.Rental">
         <MappingFragment StoreEntitySet="Rentals">
           <ScalarProperty Name="RentalId" ColumnName="RentalId" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />

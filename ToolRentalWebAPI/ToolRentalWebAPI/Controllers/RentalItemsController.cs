@@ -11,7 +11,7 @@ namespace ToolRentalWebAPI.Controllers
 {
     public class RentalItemsController : ApiController
     {
-		private YourProjectToolRentalEntities1 db = new YourProjectToolRentalEntities1();
+		private YourProjectToolRentalEntities2 db = new YourProjectToolRentalEntities2();
 
 		// GET: api/RentalItems
 		public IQueryable<RentalItem> GetRentalItems()

@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="YourProjectToolRentalEntities.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="YourProjectToolRentalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Customers">
     <Key>
       <PropertyRef Name="CustomerId" />
     </Key>
-    <Property Name="CustomerId" Type="int" Nullable="false" />
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="FName" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="LName" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Phone#" Type="varchar" MaxLength="16" Nullable="false" />
@@ -14,7 +14,7 @@
     <Key>
       <PropertyRef Name="AssetId" />
     </Key>
-    <Property Name="AssetId" Type="int" Nullable="false" />
+    <Property Name="AssetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ToolType" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Brand" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="255" Nullable="false" />
@@ -25,7 +25,7 @@
     <Key>
       <PropertyRef Name="RentalItemId" />
     </Key>
-    <Property Name="RentalItemId" Type="int" Nullable="false" />
+    <Property Name="RentalItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="RentalId" Type="int" Nullable="false" />
     <Property Name="AssetId" Type="int" Nullable="false" />
   </EntityType>
@@ -33,12 +33,12 @@
     <Key>
       <PropertyRef Name="RentalId" />
     </Key>
-    <Property Name="RentalId" Type="int" Nullable="false" />
+    <Property Name="RentalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CustomerId" Type="int" Nullable="false" />
     <Property Name="CheckedOutDate" Type="datetime" Nullable="false" />
     <Property Name="CheckedInDate" Type="datetime" Nullable="false" />
   </EntityType>
-  <Association Name="FK__RentalIte__Asset__182C9B23">
+  <Association Name="FK__RentalIte__Asset__403A8C7D">
     <End Role="Inventory" Type="Self.Inventory" Multiplicity="1" />
     <End Role="RentalItems" Type="Self.RentalItems" Multiplicity="*" />
     <ReferentialConstraint>
@@ -50,7 +50,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RentalIte__Renta__173876EA">
+  <Association Name="FK__RentalIte__Renta__3F466844">
     <End Role="Rentals" Type="Self.Rentals" Multiplicity="1" />
     <End Role="RentalItems" Type="Self.RentalItems" Multiplicity="*" />
     <ReferentialConstraint>
@@ -62,7 +62,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Rentals__Custome__145C0A3F">
+  <Association Name="FK__Rentals__Custome__3C69FB99">
     <End Role="Customers" Type="Self.Customers" Multiplicity="1" />
     <End Role="Rentals" Type="Self.Rentals" Multiplicity="*" />
     <ReferentialConstraint>
@@ -74,20 +74,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="YourProjectToolRentalEntitiesStoreContainer">
+  <EntityContainer Name="YourProjectToolRentalModelStoreContainer">
     <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RentalItems" EntityType="Self.RentalItems" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Rentals" EntityType="Self.Rentals" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__RentalIte__Asset__182C9B23" Association="Self.FK__RentalIte__Asset__182C9B23">
+    <AssociationSet Name="FK__RentalIte__Asset__403A8C7D" Association="Self.FK__RentalIte__Asset__403A8C7D">
       <End Role="Inventory" EntitySet="Inventory" />
       <End Role="RentalItems" EntitySet="RentalItems" />
     </AssociationSet>
-    <AssociationSet Name="FK__RentalIte__Renta__173876EA" Association="Self.FK__RentalIte__Renta__173876EA">
+    <AssociationSet Name="FK__RentalIte__Renta__3F466844" Association="Self.FK__RentalIte__Renta__3F466844">
       <End Role="Rentals" EntitySet="Rentals" />
       <End Role="RentalItems" EntitySet="RentalItems" />
     </AssociationSet>
-    <AssociationSet Name="FK__Rentals__Custome__145C0A3F" Association="Self.FK__Rentals__Custome__145C0A3F">
+    <AssociationSet Name="FK__Rentals__Custome__3C69FB99" Association="Self.FK__Rentals__Custome__3C69FB99">
       <End Role="Customers" EntitySet="Customers" />
       <End Role="Rentals" EntitySet="Rentals" />
     </AssociationSet>
